@@ -28,7 +28,7 @@ To run the Fam Assistant web application, follow these steps:
 
 4. **Open your web browser and navigate to:**
     ```
-    http://localhost:8501
+    http://fam-ai-web.streamlit.app
     ```
 
 You should now see the Fam Assistant showcase webpage running locally on your machine.
