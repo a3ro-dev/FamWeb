@@ -9,87 +9,172 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Enhanced CSS with animations and modern design
+# Enhanced CSS with modern design elements
 st.markdown("""
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
         
         :root {
-            --primary-color: #4F46E5;
-            --secondary-color: #10B981;
-            --background-color: #F9FAFB;
-            --text-color: #1F2937;
+            --primary-color: #3b82f6;
+            --primary-light: #60a5fa;
+            --secondary-color: #10b981;
+            --background-color: #ffffff;
+            --surface-color: #f8fafc;
+            --text-color: #1e293b;
+            --text-light: #64748b;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
         }
 
         .stApp {
             background: var(--background-color);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6, .subheader {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-color);
+            font-weight: 600;
+            letter-spacing: -0.02em;
         }
 
         .main-header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 4rem;
-            font-weight: 600;
+            font-size: 3.5rem;
+            font-weight: 700;
             text-align: center;
             margin: 2rem 0;
             animation: fadeIn 1s ease-in;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .card {
-            background: white;
-            padding: 1.5rem;
+            background: var(--surface-color);
+            padding: 2rem;
             border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            margin: 1rem 0;
-            transition: transform 0.2s;
+            box-shadow: var(--shadow-md);
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .card:hover {
             transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
 
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
         }
 
         .feature-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            border: 1px solid #E5E7EB;
-            transition: all 0.2s;
+            background: var(--surface-color);
+            padding: 1.75rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
         }
 
         .feature-item:hover {
-            border-color: var(--primary-color);
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1);
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .feature-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
 
         .command-section {
-            background: #1F2937;
+            background: var(--text-color);
             color: white;
-            padding: 2rem;
+            padding: 2.5rem;
+            border-radius: 1.25rem;
+            margin: 2.5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section {
+            padding: 1.5rem;
+            background: var(--surface-color);
             border-radius: 1rem;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-sm);
         }
 
-        .command-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+        .section:hover {
+            box-shadow: var(--shadow-md);
         }
 
-        .command-item {
-            background: rgba(255,255,255,0.1);
-            padding: 1rem;
-            border-radius: 0.5rem;
+        code {
+            background: rgba(0,0,0,0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 0.375rem;
+            font-size: 0.875em;
+            font-family: 'SF Mono', 'JetBrains Mono', monospace;
         }
 
+        pre {
+            background: var(--text-color);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            overflow-x: auto;
+            box-shadow: var(--shadow-md);
+        }
+
+        pre code {
+            background: transparent;
+            color: #e2e8f0;
+            padding: 0;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .button:hover {
+            background: var(--primary-light);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-1px);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--surface-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-light);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -102,6 +187,45 @@ st.markdown("""
             .feature-grid {
                 grid-template-columns: 1fr;
             }
+            .section {
+                padding: 1rem;
+            }
+        }
+
+        /* Include a background animation (updated) */
+        body:before {
+            content: '';
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(59,130,246,0.2), transparent 70%);
+            animation: floatBG 10s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes floatBG {
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+            100% {
+                transform: scale(1.2) translate(-20px, -30px);
+            }
+        }
+
+        /* Add a glow hover effect to .card and .feature-item */
+        .card:hover, .feature-item:hover {
+            box-shadow: 0 0 12px rgba(59,130,246,0.3), var(--shadow-lg);
+            transform: translateY(-8px);
+        }
+
+        /* Add neon glow to main header text */
+        .main-header {
+            text-shadow: 0 0 6px rgba(59,130,246,0.7), 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Intensify button glow on hover */
+        .button:hover {
+            box-shadow: 0 0 8px rgba(59,130,246,0.4), var(--shadow-md);
         }
     </style>
 """, unsafe_allow_html=True)
@@ -254,21 +378,7 @@ cd FAM</code></pre>
         <li><strong>Configuration</strong>:
             <ul>
                 <li>Copy the example configuration file:
-                    <pre><code>cp conf/config.example.yaml conf/config.yaml</code></pre>
-                </li>
-                <li>Fill in the required fields in <code>config.yaml</code> with your specific details:
-                    <pre><code>main:
-  access_key: "YOUR_PORCUPINE_ACCESS_KEY"
-  keyword_path: "/path/to/keyword.ppn"
-  music_path: "/path/to/music/directory"
-  openai_api_key: "YOUR_OPENAI_API_KEY"
-  weather_api_key: "YOUR_WEATHER_API_KEY"
-  news_api_key: "YOUR_NEWS_API_KEY"
-  email:
-    sender_email: "akshatsingh14372@outlook.com"
-    password: "YOUR_EMAIL_PASSWORD"
-    smtp_server: "smtp.example.com"
-    smtp_port: 587</code></pre>
+                    <pre><code>cp conf/secrets.example.yaml conf/secrets.yaml</code></pre>
                 </li>
             </ul>
         </li>
@@ -283,21 +393,42 @@ cd FAM</code></pre>
 st.markdown('<div class="subheader" id="configuration">Configuration</div>', unsafe_allow_html=True)
 st.markdown("""
 <div class="section">
-    <p>The configuration file <code>config.yaml</code> contains various settings such as API keys, file paths, and other parameters. Ensure all required fields are filled out correctly to enable the assistant's functionalities.</p>
+    <p>The configuration file <code>secrets.yaml</code> contains various settings such as API keys, file paths, and other parameters. Ensure all required fields are filled out correctly to enable the assistant's functionalities.</p>
     <h3>Configuration Fields</h3>
     <ul>
         <li><strong>access_key</strong>: Your access key for the Porcupine wake word detection engine.</li>
         <li><strong>keyword_path</strong>: Path to your Porcupine keyword file.</li>
         <li><strong>music_path</strong>: Path to your music directory.</li>
+        <li><strong>groq_api_key</strong>: Your Groq API key for specific functionalities.</li>
         <li><strong>openai_api_key</strong>: Your OpenAI API key for GPT integration.</li>
-        <li><strong>weather_api_key</strong>: Your API key for fetching weather information.</li>
-        <li><strong>news_api_key</strong>: Your API key for fetching news updates.</li>
-        <li><strong>email</strong>:
+        <li><strong>model_name</strong>: The name of the model you are using.</li>
+        <li><strong>utilities</strong>:
             <ul>
-                <li><strong>sender_email</strong>: Your email address used for sending emails.</li>
-                <li><strong>password</strong>: Your email account password.</li>
-                <li><strong>smtp_server</strong>: SMTP server address for your email provider.</li>
-                <li><strong>smtp_port</strong>: SMTP server port (commonly 587 for TLS).</li>
+                <li><strong>author</strong>: Your name.</li>
+                <li><strong>audio_files</strong>:
+                    <ul>
+                        <li><strong>success</strong>: Path to the success audio file.</li>
+                        <li><strong>error</strong>: Path to the error audio file.</li>
+                        <li><strong>load</strong>: Path to the load audio file.</li>
+                    </ul>
+                </li>
+                <li><strong>model_path</strong>: Path to your model file.</li>
+                <li><strong>weather_api_key</strong>: Your API key for fetching weather information.</li>
+                <li><strong>news_api_key</strong>: Your API key for fetching news updates.</li>
+                <li><strong>email</strong>:
+                    <ul>
+                        <li><strong>sender_email</strong>: Your email address used for sending emails.</li>
+                        <li><strong>sender_password</strong>: Your email account password.</li>
+                        <li><strong>smtp_server</strong>: SMTP server address for your email provider.</li>
+                        <li><strong>smtp_port</strong>: SMTP server port (commonly 587 for TLS).</li>
+                    </ul>
+                </li>
+                <li><strong>image_path</strong>: Path to your image file.</li>
+            </ul>
+        </li>
+        <li><strong>music_search</strong>:
+            <ul>
+                <li><strong>output_path</strong>: Path to the output directory for music search results.</li>
             </ul>
         </li>
     </ul>
@@ -468,3 +599,4 @@ st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
+
